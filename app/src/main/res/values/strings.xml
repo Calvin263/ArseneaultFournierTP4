@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TP3</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_makeProducts">Ajouter Produits</string>
+    <string name="action_deleteProducts">Vider les Produits</string>
+    <string name="action_makeTransaction">Créer une Transaction</string>
+
+</resources>
