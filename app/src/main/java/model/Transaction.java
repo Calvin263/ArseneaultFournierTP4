@@ -1,4 +1,6 @@
-package com.marc.arseneault.tp4;
+package model;
+
+import com.marc.arseneault.tp4.ProductItem;
 
 import java.util.List;
 

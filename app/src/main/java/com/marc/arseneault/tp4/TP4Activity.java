@@ -19,13 +19,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import model.Product;
+import model.Transaction;
+import model.repository.CRUD;
+import model.repository.ProductRepository;
+import model.repository.TransactionRepository;
+
 
 public class TP4Activity extends ActionBarActivity {
 
     JorisAdapter adapter;
     List<ProductItem> items = new ArrayList<ProductItem>();
-    public static CRUD<Product> productRepository;
-    public static CRUD<Transaction> transactionRepository;
+    public static ProductRepository productRepository;
+    public static TransactionRepository transactionRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -210,14 +216,6 @@ public class TP4Activity extends ActionBarActivity {
         transactionRepository.save(transaction);
 
         Toast.makeText(getBaseContext(), "Facture de " + String.format("%10.2f", getTotalPrice()) + "$", Toast.LENGTH_SHORT).show();
-    }
-
-
-    public void lineClick(View v) {
-        ProductItem productItem = (ProductItem) v.getTag();
-        if (productItem!= null) {
-            Toast.makeText(getBaseContext(), "Click sur toute la ligne " + productItem.getProduct().getName(), Toast.LENGTH_SHORT).show();
-        }
     }
 
     public void plusClick(View v) {

@@ -1,5 +1,7 @@
 package com.marc.arseneault.tp4;
 
+import model.Product;
+
 /**
  * Created by 1333297 on 2015-04-21.
  */

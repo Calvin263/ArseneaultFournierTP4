@@ -1,4 +1,4 @@
-package com.marc.arseneault.tp4;
+package model.repository;
 
 import java.util.List;
 
@@ -15,8 +15,6 @@ public interface CRUD<T> {
 
     T getById(Long p);
 
-    T getByUPC(String p);
-
     List<T> getAll();
 
     void deleteOne(Long o);
@@ -24,4 +22,5 @@ public interface CRUD<T> {
     void deleteOne(T o);
 
     void deleteAll();
+
 }

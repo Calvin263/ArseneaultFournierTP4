@@ -6,6 +6,10 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Product;
+import model.repository.CRUD;
+import model.repository.ProductRepository;
+
 
 /**
  * Created by 1333297 on 2015-04-29.
@@ -16,7 +20,7 @@ public class ProductRepositoryTest  extends AndroidTestCase {
 
 
 
-        CRUD<Product> repository;
+        ProductRepository repository;
 
         @Override
         protected void setUp() throws Exception {

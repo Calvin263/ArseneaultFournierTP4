@@ -1,38 +1,41 @@
-package com.marc.arseneault.tp4;
+package model.repository;
 
 import android.content.Context;
-import com.google.gson.Gson;
-import org.apache.commons.io.FileUtils;
+
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import org.apache.commons.io.FileUtils;
+import com.google.gson.Gson;
+
+import model.Product;
 
 /**
  * Created by 1333297 on 2015-04-29.
  */
-public class TransactionRepository implements CRUD<Transaction> {
+public class ProductRepository  implements CRUD<Product> {
+
 
         Gson gson = new Gson();
 
-        Class<Transaction> classe = Transaction.class;
+        Class<Product> classe = Product.class;
 
         Context context;
 
-        public TransactionRepository(Context c){
+        public ProductRepository(Context c){
             this.context = c;
             this.createStorage();
         }
 
-        public List<Transaction> getAll() {
+        public List<Product> getAll() {
             synchronized (classe) {
-                List<Transaction> res = new ArrayList<Transaction>();
+                List<Product> res = new ArrayList<Product>();
                 File base = context.getFilesDir();
                 for (File f : base.listFiles()){
                     try{
                         //System.out.println("File is "+f.getName());
                         String content = FileUtils.readFileToString(f);
-                        Transaction a = gson.fromJson(content, classe);
+                        Product a = gson.fromJson(content, classe);
                         res.add(a);
                     }
                     catch(Exception e){
@@ -48,7 +51,7 @@ public class TransactionRepository implements CRUD<Transaction> {
             this.deleteOne(this.getById(o));
         }
 
-        public long save(Transaction a) {
+        public long save(Product a) {
             synchronized (classe) {
                 // set the id
                 if (a.getId() == null) a.setId(this.nextAvailableId());
@@ -56,7 +59,7 @@ public class TransactionRepository implements CRUD<Transaction> {
                 String serialise = gson.toJson(a);
                 File base = context.getFilesDir();
                 try {
-                    FileUtils.writeStringToFile(new File(base, a.getId()+".Transaction"), serialise);
+                    FileUtils.writeStringToFile(new File(base, a.getId()+".Product"), serialise);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -66,29 +69,29 @@ public class TransactionRepository implements CRUD<Transaction> {
         }
 
         @Override
-        public void saveMany(Iterable<Transaction> list) {
-            for (Transaction p : list ){
+        public void saveMany(Iterable<Product> list) {
+            for (Product p : list ){
                 this.save(p);
             }
         }
 
         @Override
-        public void saveMany(Transaction... list) {
-            for (Transaction p : list ){
+        public void saveMany(Product... list) {
+            for (Product p : list ){
                 this.save(p);
             }
         }
 
         @Override
-        public Transaction getById(Long id) {
+        public Product getById(Long id) {
             synchronized (classe) {
                 String content;
                 try {
                     File base = context.getFilesDir();
-                    File f = new File(base,id+".Transaction");
+                    File f = new File(base,id+".Product");
                     if (!f.exists()) return null;
-                    content = FileUtils.readFileToString(new File(base,id+".Transaction"));
-                    Transaction a = gson.fromJson(content, classe);
+                    content = FileUtils.readFileToString(new File(base,id+".Product"));
+                    Product a = gson.fromJson(content, classe);
                     return a;
                 } catch (IOException e) {
                     return null;
@@ -96,15 +99,24 @@ public class TransactionRepository implements CRUD<Transaction> {
             }
         }
 
-        //do not use
-        public Transaction getByUPC(String pUPC) {
-            return null;
+        public Product getByUPC(String pUPC) {
+            synchronized (classe) {
+                if (pUPC.isEmpty())
+                    throw new NullPointerException();
+                for (Product product: getAll())
+                {
+                    String UPC = product.getUPC();
+                    if (UPC.equals(pUPC))
+                        return product;
+                }
+                return null;
+            }
         }
 
-        public void deleteOne(Transaction a) {
+        public void deleteOne(Product a) {
             synchronized (classe) {
                 File base = context.getFilesDir();
-                File f = new File(base, a.getId()+".Transaction");
+                File f = new File(base, a.getId()+".Product");
                 f.delete();
             }
         }
@@ -119,7 +131,7 @@ public class TransactionRepository implements CRUD<Transaction> {
         private long nextAvailableId(){
             synchronized (classe) {
                 long max = 0;
-                for (Transaction a : getAll()){
+                for (Product a : getAll()){
                     if (a.getId() > max) max = a.getId();
                 }
                 return max+1;
@@ -149,4 +161,5 @@ public class TransactionRepository implements CRUD<Transaction> {
                 folder.delete();
             }catch(Exception e){}
         }
+
 }

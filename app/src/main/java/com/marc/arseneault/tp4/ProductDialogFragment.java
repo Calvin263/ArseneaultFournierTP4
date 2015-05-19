@@ -15,6 +15,8 @@ import android.widget.EditText;
 
 import java.security.InvalidParameterException;
 
+import model.Product;
+
 /**
  * Created by 1333297 on 2015-04-29.
  */

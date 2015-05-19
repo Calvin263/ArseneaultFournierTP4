@@ -1,4 +1,4 @@
-package com.marc.arseneault.tp4;
+package model;
 
 /**
  * Created by 1333297 on 2015-04-21.
