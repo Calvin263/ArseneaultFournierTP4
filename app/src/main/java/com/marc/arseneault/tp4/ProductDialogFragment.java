@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import java.security.InvalidParameterException;
@@ -33,6 +34,7 @@ public class ProductDialogFragment extends DialogFragment {
         final EditText nom = (EditText) v.findViewById(R.id.nomProduit);
         final EditText prix = (EditText) v.findViewById(R.id.prixProduit);
         final EditText code = (EditText) v.findViewById(R.id.UPCProduit);
+        final CheckBox tfo = (CheckBox) v.findViewById(R.id.checkBoxTfo);
 
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +43,7 @@ public class ProductDialogFragment extends DialogFragment {
                 Log.i("Dialog", "code " + code.getText() + " ," + nom.getText() + " ($ " + prix.getText() + " )");
 
                 //
-                Product product = new Product(nom.getText().toString(), code.getText().toString(), Double.parseDouble(prix.getText().toString()));
+                Product product = new Product(nom.getText().toString(), code.getText().toString(), Double.parseDouble(prix.getText().toString()), tfo.isChecked());
                 if (product.getPrice() < 0 || product.getPrice() > Integer.MAX_VALUE)
                     throw new InvalidParameterException("Price");
                 else if (product.getUPC().isEmpty())

@@ -34,6 +34,14 @@
         android:layout_marginBottom="30px">
     </EditText>
 
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Est en 2 pour 1"
+        android:id="@+id/checkBoxTfo"
+        android:layout_gravity="center_horizontal"
+        android:checked="false" />
+
     <Button
         android:id="@+id/add"
         style="?android:attr/buttonStyleSmall"
