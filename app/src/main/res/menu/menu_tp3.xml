@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools" tools:context=".TP3Activity">
 
     <item android:id="@+id/action_makeProducts" android:title="@string/action_makeProducts"
-    android:orderInCategory="100" app:showAsAction="never" />
+        android:orderInCategory="100" app:showAsAction="never" />
 
     <item android:id="@+id/action_deleteProducts" android:title="@string/action_deleteProducts"
         android:orderInCategory="100" app:showAsAction="never" />
@@ -11,4 +11,6 @@
     <item android:id="@+id/action_makeTransaction" android:title="@string/action_makeTransaction"
         android:orderInCategory="100" app:showAsAction="never" />
 
+    <item android:id="@+id/action_changeTaxes" android:title="@string/action_changeTaxes"
+        android:onrderInCategory="100" app:showAsAction="never" />
 </menu>

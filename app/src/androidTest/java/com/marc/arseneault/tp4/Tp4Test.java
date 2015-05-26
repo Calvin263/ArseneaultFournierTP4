@@ -5,6 +5,8 @@ import android.test.AndroidTestCase;
 import junit.framework.Assert;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import model.Product;
@@ -17,6 +19,7 @@ import model.repository.ProductRepository;
 public class Tp4Test extends AndroidTestCase{
 
     ProductRepository repository;
+    List<ProductItem> items;
 
     @Override
     protected void setUp() throws Exception {
@@ -24,6 +27,7 @@ public class Tp4Test extends AndroidTestCase{
         repository = new ProductRepository(getContext());
         repository.deleteAll();
 
+        items = new ArrayList<ProductItem>();
     }
 
     @Override
@@ -31,14 +35,18 @@ public class Tp4Test extends AndroidTestCase{
         super.tearDown();
         repository.deleteAll();
         repository = null;
+
+        items.clear();
     }
 
     public void testTfo2Items() {
         Product product = new Product("Avocat", "123456", 12.54, true);
+        ProductItem p = new ProductItem(1, product);
+        items.add(p);
 
         TP4Activity activity = new TP4Activity();
         activity.adapter.add(new ProductItem(2, product));
-        Assert.assertEquals("Test deux pour un 2 items failed", 12.54, activity.getTotalPrice());
+        Assert.assertEquals("Test deux pour un 2 items failed", 12.54, activity.getTotalPrice(items));
     }
 
     public void testTfo1Item() {
@@ -46,7 +54,7 @@ public class Tp4Test extends AndroidTestCase{
 
         TP4Activity activity = new TP4Activity();
         activity.adapter.add(new ProductItem(1, product));
-        Assert.assertEquals("Test deux pour un 1 items failed", 12.54, activity.getTotalPrice());
+        Assert.assertEquals("Test deux pour un 1 items failed", 12.54, activity.getTotalPrice(items));
     }
 
     public void testTfo3Items() {
@@ -54,7 +62,7 @@ public class Tp4Test extends AndroidTestCase{
 
         TP4Activity activity = new TP4Activity();
         activity.adapter.add(new ProductItem(3, product));
-        Assert.assertEquals("Test deux pour un 2 items failed", 12.54 * 2, activity.getTotalPrice());
+        Assert.assertEquals("Test deux pour un 2 items failed", 12.54 * 2, activity.getTotalPrice(items));
     }
 
     public void testRabais10pourcent() {
@@ -63,7 +71,7 @@ public class Tp4Test extends AndroidTestCase{
 
         TP4Activity activity = new TP4Activity();
         activity.adapter.add(new ProductItem(1, product));
-        Assert.assertEquals("Test deux pour un 2 items failed", 12.54 * 0.90, activity.getTotalPrice());
+        Assert.assertEquals("Test deux pour un 2 items failed", 12.54 * 0.90, activity.getTotalPrice(items));
     }
 
     public void testRabais100xRandomPourcent() {
@@ -80,7 +88,7 @@ public class Tp4Test extends AndroidTestCase{
 
             TP4Activity activity = new TP4Activity();
             activity.adapter.add(new ProductItem(1, product));
-            Assert.assertEquals("Test deux pour un 2 items failed", 12.54 * truePourcent, activity.getTotalPrice());
+            Assert.assertEquals("Test deux pour un 2 items failed", 12.54 * truePourcent, activity.getTotalPrice(items));
         }
     }
 

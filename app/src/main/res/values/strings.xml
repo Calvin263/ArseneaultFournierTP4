@@ -6,5 +6,6 @@
     <string name="action_makeProducts">Ajouter Produits</string>
     <string name="action_deleteProducts">Vider les Produits</string>
     <string name="action_makeTransaction">Créer une Transaction</string>
+    <string name="action_changeTaxes">Changer le seuil de taxes</string>
 
 </resources>
