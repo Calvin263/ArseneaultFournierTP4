@@ -33,17 +33,16 @@ public class TP4Activity extends ActionBarActivity {
 
     JorisAdapter adapter;
     List<ProductItem> items = new ArrayList<ProductItem>();
-    public static RepositoryServiceInterface repoServ;
+    public static RepositoryService repoServ;
     public static double seuilTaxes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_tp3);
-        //Pour ne pas avoir des transactions de stockés après la fermeture de l'application
-        //Normalement, on voudrait les garder
-        repoServ.WipeTransactions();
         repoServ = new RepositoryService(getApplicationContext());
+        repoServ.WipeTransactions();
 
         adapter = new JorisAdapter(TP4Activity.this, items);
         ListView list = (ListView)findViewById(R.id.product_List);
@@ -93,11 +92,12 @@ public class TP4Activity extends ActionBarActivity {
 
     public void createAndShowTaxes () {
         try {
-            ProductDialogFragment newFragment = new ProductDialogFragment();
+            SeuilTaxesDialogFragment newFragment = new SeuilTaxesDialogFragment();
             newFragment.show(getFragmentManager(), "dialog");
         } catch (InvalidParameterException e) {
             Toast.makeText(getBaseContext(), "Certain paramètres sont invalides", Toast.LENGTH_SHORT).show();
         }
+        updatePrice();
     }
 
     public void makeTransaction() {
@@ -221,7 +221,7 @@ public class TP4Activity extends ActionBarActivity {
     //
 
     private void updatePrice() {
-        double totalPrice = repoServ.GetTotalPrice(items);
+        double totalPrice = repoServ.GetTotalPrice(items, seuilTaxes);
         TextView totalPriceText = (TextView)findViewById(R.id.totalPrice);
         totalPriceText.setText("$" + String.format("%10.2f", totalPrice));
         adapter.notifyDataSetChanged();
@@ -231,7 +231,7 @@ public class TP4Activity extends ActionBarActivity {
         Log.i("Facture", new Transaction(items).toString());
         repoServ.SaveTransaction(items);
 
-        Toast.makeText(getBaseContext(), "Facture de " + String.format("%10.2f", repoServ.GetTotalPrice(items)) + "$", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), "Facture de " + String.format("%10.2f", repoServ.GetTotalPrice(items, seuilTaxes)) + "$", Toast.LENGTH_SHORT).show();
     }
 
     public void plusClick(View v) {

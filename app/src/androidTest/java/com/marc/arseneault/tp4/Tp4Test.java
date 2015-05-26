@@ -47,7 +47,7 @@ public class Tp4Test extends AndroidTestCase{
         ProductItem p = new ProductItem(1, product);
         items.add(p);
 
-        Assert.assertEquals("Test deux pour un 2 items failed", 12.54, repoServ.GetTotalPrice(items));
+        Assert.assertEquals("Test deux pour un 2 items failed", 12.54, repoServ.GetTotalPrice(items, 10000));
     }
 
     public void testTfo1Item() {
@@ -55,7 +55,7 @@ public class Tp4Test extends AndroidTestCase{
 
         TP4Activity activity = new TP4Activity();
         activity.adapter.add(new ProductItem(1, product));
-        Assert.assertEquals("Test deux pour un 1 items failed", 12.54, repoServ.GetTotalPrice(items));
+        Assert.assertEquals("Test deux pour un 1 items failed", 12.54, repoServ.GetTotalPrice(items, 100000));
     }
 
     public void testTfo3Items() {
@@ -63,7 +63,7 @@ public class Tp4Test extends AndroidTestCase{
 
         TP4Activity activity = new TP4Activity();
         activity.adapter.add(new ProductItem(3, product));
-        Assert.assertEquals("Test deux pour un 2 items failed", 12.54 * 2, repoServ.GetTotalPrice(items));
+        Assert.assertEquals("Test deux pour un 2 items failed", 12.54 * 2, repoServ.GetTotalPrice(items, 100000));
     }
 
     public void testRabais10pourcent() {
@@ -72,7 +72,7 @@ public class Tp4Test extends AndroidTestCase{
 
         TP4Activity activity = new TP4Activity();
         activity.adapter.add(new ProductItem(1, product));
-        Assert.assertEquals("Test deux pour un 2 items failed", 12.54 * 0.90, repoServ.GetTotalPrice(items));
+        Assert.assertEquals("Test deux pour un 2 items failed", 12.54 * 0.90, repoServ.GetTotalPrice(items, 100000));
     }
 
     public void testRabais100xRandomPourcent() {
@@ -89,7 +89,7 @@ public class Tp4Test extends AndroidTestCase{
 
             TP4Activity activity = new TP4Activity();
             activity.adapter.add(new ProductItem(1, product));
-            Assert.assertEquals("Test deux pour un 2 items failed", 12.54 * truePourcent, repoServ.GetTotalPrice(items));
+            Assert.assertEquals("Test deux pour un 2 items failed", 12.54 * truePourcent, repoServ.GetTotalPrice(items, 100000));
         }
     }
 

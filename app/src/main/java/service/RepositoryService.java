@@ -32,7 +32,7 @@ public class RepositoryService implements RepositoryServiceInterface {
     }
 
     @Override
-    public double GetTotalPrice(List<ProductItem> a)
+    public double GetTotalPrice(List<ProductItem> a, double b)
     {
         double result = 0.0;
 
@@ -42,6 +42,10 @@ public class RepositoryService implements RepositoryServiceInterface {
                 result += (productItem.getQuantity() - (productItem.getQuantity()/2)) * productItem.getProduct().getPrice();
             else
                 result += productItem.getQuantity() * productItem.getProduct().getPrice();
+        }
+        if (result <= b)
+        {
+            result = (result * 1.15) * 1.15;
         }
 
         return result;

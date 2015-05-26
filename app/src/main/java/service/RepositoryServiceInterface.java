@@ -14,7 +14,7 @@ public interface RepositoryServiceInterface {
 
     public ProductRepository GetProductRepository();
 
-    public double GetTotalPrice(List<ProductItem> a);
+    public double GetTotalPrice(List<ProductItem> a, double b);
 
     public void SaveTransaction(List<ProductItem> a);
     public void SaveProduct(Product a);
