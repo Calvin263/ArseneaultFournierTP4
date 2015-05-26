@@ -33,7 +33,8 @@ public class TP4Activity extends ActionBarActivity {
 
     JorisAdapter adapter;
     List<ProductItem> items = new ArrayList<ProductItem>();
-    RepositoryServiceInterface repoServ;
+    public static RepositoryServiceInterface repoServ;
+    public static double seuilTaxes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class TP4Activity extends ActionBarActivity {
         ListView list = (ListView)findViewById(R.id.product_List);
         list.setAdapter(adapter);
 
+        seuilTaxes = 100;
         updatePrice();
     }
 
@@ -77,11 +79,27 @@ public class TP4Activity extends ActionBarActivity {
         else if (id == R.id.action_makeTransaction) {
             makeTransaction();
         }
+        else if (id == R.id.action_changeTaxes) {
+            changeTaxes();
+        }
 
         return super.onOptionsItemSelected(item);
     }
 
     //
+    public void changeTaxes() {
+        createAndShowTaxes();
+    }
+
+    public void createAndShowTaxes () {
+        try {
+            ProductDialogFragment newFragment = new ProductDialogFragment();
+            newFragment.show(getFragmentManager(), "dialog");
+        } catch (InvalidParameterException e) {
+            Toast.makeText(getBaseContext(), "Certain paramètres sont invalides", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public void makeTransaction() {
         List<Product> products = repoServ.GetAllProducts();
         if (products.size() <= 1)

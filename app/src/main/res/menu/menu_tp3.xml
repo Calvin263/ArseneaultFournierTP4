@@ -12,5 +12,5 @@
         android:orderInCategory="100" app:showAsAction="never" />
 
     <item android:id="@+id/action_changeTaxes" android:title="@string/action_changeTaxes"
-        android:onrderInCategory="100" app:showAsAction="never" />
+        android:orderInCategory="100" app:showAsAction="never" />
 </menu>

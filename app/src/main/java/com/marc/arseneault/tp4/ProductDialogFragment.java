@@ -51,7 +51,7 @@ public class ProductDialogFragment extends DialogFragment {
                 else if (product.getName().isEmpty() || product.getName().length() <= 0 || product.getName().length() > 50)
                     throw new InvalidParameterException("Nom");
 
-                TP4Activity.productRepository.save(product);
+                TP4Activity.repoServ.SaveProduct(product);
                 //
 
                 ProductDialogFragment.this.dismiss();
