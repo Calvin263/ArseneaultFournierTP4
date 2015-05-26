@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Random;
 
 import model.Product;
-import model.repository.ProductRepository;
 import service.RepositoryService;
 import service.RepositoryServiceInterface;
 
@@ -30,7 +29,7 @@ public class Tp4Test extends AndroidTestCase{
         repoServ.WipeProducts();
         repoServ.WipeTransactions();
 
-        items = new ArrayList<ProductItem>();
+        items = new ArrayList<>();
     }
 
     @Override
