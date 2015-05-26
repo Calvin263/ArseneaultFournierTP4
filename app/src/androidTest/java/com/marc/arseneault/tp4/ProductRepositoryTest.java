@@ -38,7 +38,7 @@ public class ProductRepositoryTest  extends AndroidTestCase {
         }
 
         public void testSaveAndGetAll(){
-            Product p = new Product("produit", "1333297", 10.0);
+            Product p = new Product("produit", "1333297", 10.0, false);
             repository.save(p);
             assertEquals(repository.getAll().size(), 1);
         }
@@ -47,7 +47,7 @@ public class ProductRepositoryTest  extends AndroidTestCase {
             List<Product> prods = new ArrayList<Product>();
             int size = 22;
             for (int i = 0 ; i < size ; i++){
-                Product p = new Product("produit"+i, "1333297"+i, 10.0+i);
+                Product p = new Product("produit"+i, "1333297"+i, 10.0+i, false);
                 prods.add(p);
             }
             repository.saveMany(prods);
@@ -55,14 +55,14 @@ public class ProductRepositoryTest  extends AndroidTestCase {
         }
 
         public void testGetById(){
-            Product p = new Product("produit", "1333297", 10.0);
+            Product p = new Product("produit", "1333297", 10.0, false);
             long tested = repository.save(p);
             Product recov = repository.getById(tested);
             assertEquals(recov.getPrice(), 10.0);
         }
 
         public void testDeleteOne(){
-            Product p = new Product("produit", "1333297", 10.0);
+            Product p = new Product("produit", "1333297", 10.0, false);
             repository.save(p);
             assertEquals(1, repository.getAll().size());
             repository.deleteOne(p);
@@ -70,7 +70,7 @@ public class ProductRepositoryTest  extends AndroidTestCase {
         }
 
         public void testDeleteOneById(){
-            Product p = new Product("produit", "1333297", 10.0);
+            Product p = new Product("produit", "1333297", 10.0, false);
             repository.save(p);
             assertEquals(1, repository.getAll().size());
             repository.deleteOne(p.getId());
@@ -82,7 +82,7 @@ public class ProductRepositoryTest  extends AndroidTestCase {
             List<Product> prods = new ArrayList<Product>();
             int size = 22;
             for (int i = 0 ; i < size ; i++){
-                Product p = new Product("produit"+i, "1333297"+i, 10.0+i);
+                Product p = new Product("produit"+i, "1333297"+i, 10.0+i, false);
                 prods.add(p);
             }
             repository.saveMany(prods);
@@ -94,7 +94,7 @@ public class ProductRepositoryTest  extends AndroidTestCase {
         public void testSaveOnePerformance(){
             long a = System.currentTimeMillis();
             for (int i = 0 ; i < 300 ; i++){
-                Product p = new Product("produit"+i, "1333297"+i, 10.0+i);
+                Product p = new Product("produit"+i, "1333297"+i, 10.0+i, false);
                 repository.save(p);
             }
             long b = System.currentTimeMillis();
@@ -102,7 +102,7 @@ public class ProductRepositoryTest  extends AndroidTestCase {
         }
 
         public void testScanUPCNull() {
-            Product p = new Product("produit", "1333297", 10.0);
+            Product p = new Product("produit", "1333297", 10.0, false);
             repository.save(p);
             try {
                 repository.getByUPC("");
@@ -114,7 +114,7 @@ public class ProductRepositoryTest  extends AndroidTestCase {
         }
 
         public void testScanProduitNonexistant() {
-            Product p = new Product("produit", "1333297", 10.0);
+            Product p = new Product("produit", "1333297", 10.0, false);
             repository.save(p);
             assertEquals(repository.getByUPC("42"), null);
         }
