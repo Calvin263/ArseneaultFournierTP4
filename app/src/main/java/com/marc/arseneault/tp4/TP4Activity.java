@@ -131,28 +131,28 @@ public class TP4Activity extends ActionBarActivity {
         pCRUD.deleteAll();
 
         //page 1
-        pCRUD.save(new Product("Huile de Pacome", "7011043018498", 12.35));
-        pCRUD.save(new Product("Langue de Porc", "6797413659379", 8.05));
-        pCRUD.save(new Product("Tentacule de Pieuvre", "7651921095861", 22.25));
-        pCRUD.save(new Product("Couille de Mouton", "5729286863776", 10.25));
-        pCRUD.save(new Product("Patate", "6075631136316", 2.50));
-        pCRUD.save(new Product("Seringue", "6116088359160", 2.25));
-        pCRUD.save(new Product("Dictionnaire", "3298482123547", 35.95));
-        pCRUD.save(new Product("Pied de Porc", "162992447343", 6.55));
-        pCRUD.save(new Product("Jesus Juice", "5648382418072", 12.90));
-        pCRUD.save(new Product("Crayon HB", "5942916222891", 1.50));
+        pCRUD.save(new Product("Huile de Pacome", "7011043018498", 12.35, true));
+        pCRUD.save(new Product("Langue de Porc", "6797413659379", 8.05, false));
+        pCRUD.save(new Product("Tentacule de Pieuvre", "7651921095861", 22.25, false));
+        pCRUD.save(new Product("Couille de Mouton", "5729286863776", 10.25, false));
+        pCRUD.save(new Product("Patate", "6075631136316", 2.50, false));
+        pCRUD.save(new Product("Seringue", "6116088359160", 2.25, false));
+        pCRUD.save(new Product("Dictionnaire", "3298482123547", 35.95, false));
+        pCRUD.save(new Product("Pied de Porc", "162992447343", 6.55, false));
+        pCRUD.save(new Product("Jesus Juice", "5648382418072", 12.90, false));
+        pCRUD.save(new Product("Crayon HB", "5942916222891", 1.50, false));
 
         //page 2
-        pCRUD.save(new Product("Cadavre", "8038722591249", 10.95));
-        pCRUD.save(new Product("Tableau Noir", "1589477250587", 25.50));
-        pCRUD.save(new Product("Tableau Blanc", "7611473873003", 25.55));
-        pCRUD.save(new Product("Souris", "5088408786417", 13.25));
-        pCRUD.save(new Product("Ibuprofen", "3481608318716", 9.95));
-        pCRUD.save(new Product("Drapeau Blanc", "4407073486209", 10.50));
-        pCRUD.save(new Product("Dette Étudiante", "3593013272573", 50.50));
-        pCRUD.save(new Product("Menottes", "4233891349934", 17.50));
-        pCRUD.save(new Product("Matraque", "2657604046187", 23.35));
-        pCRUD.save(new Product("Fond de Retraite", "7224672377618", 50.50));
+        pCRUD.save(new Product("Cadavre", "8038722591249", 10.95, true));
+        pCRUD.save(new Product("Tableau Noir", "1589477250587", 25.50, false));
+        pCRUD.save(new Product("Tableau Blanc", "7611473873003", 25.55, false));
+        pCRUD.save(new Product("Souris", "5088408786417", 13.25, false));
+        pCRUD.save(new Product("Ibuprofen", "3481608318716", 9.95, false));
+        pCRUD.save(new Product("Drapeau Blanc", "4407073486209", 10.50, false));
+        pCRUD.save(new Product("Dette Étudiante", "3593013272573", 50.50, false));
+        pCRUD.save(new Product("Menottes", "4233891349934", 17.50, false));
+        pCRUD.save(new Product("Matraque", "2657604046187", 23.35, false));
+        pCRUD.save(new Product("Fond de Retraite", "7224672377618", 50.50, false));
     }
 
     public void clickAndShow(View v){
@@ -205,7 +205,10 @@ public class TP4Activity extends ActionBarActivity {
         double totalPrice =0.00;
         for (ProductItem productItem : items)
         {
-            totalPrice += productItem.getQuantity() * productItem.getProduct().getPrice();
+            if (productItem.getProduct().getTfo())
+                totalPrice += (productItem.getQuantity() - (productItem.getQuantity()/2)) * productItem.getProduct().getPrice();
+            else
+                totalPrice += productItem.getQuantity() * productItem.getProduct().getPrice();
         }
         return totalPrice;
     }

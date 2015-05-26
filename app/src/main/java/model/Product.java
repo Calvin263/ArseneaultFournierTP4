@@ -43,12 +43,20 @@ public class Product {
         this.m_Price = m_Price;
     }
 
+    public Boolean getTfo() {
+        return m_tfo;
+    }
+
+    public void setTfo(Boolean m_tfo) {
+        this.m_tfo = m_tfo;
+    }
     //constructor
-    public Product (String pName, String pUPC, double pPrice)
+    public Product (String pName, String pUPC, double pPrice, Boolean pTfo)
     {
         this.m_Name = pName;
         this.m_UPC = pUPC;
         this.m_Price = pPrice;
+        this.m_tfo = pTfo;
     }
 
     public Product ()
