@@ -11,6 +11,7 @@ public class Product {
     String m_UPC;
     double m_Price;
     Long m_id;
+    Boolean m_tfo;
 
     //getters and setters
 
