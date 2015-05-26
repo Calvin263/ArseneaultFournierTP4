@@ -195,15 +195,15 @@ public class TP4Activity extends ActionBarActivity {
     //
 
     private void updatePrice() {
-        double totalPrice = getTotalPrice();
+        double totalPrice = getTotalPrice(items);
         TextView totalPriceText = (TextView)findViewById(R.id.totalPrice);
         totalPriceText.setText("$" + String.format("%10.2f", totalPrice));
         adapter.notifyDataSetChanged();
     }
 
-    public double getTotalPrice(){
+    public static double getTotalPrice(List<ProductItem> pItems){
         double totalPrice =0.00;
-        for (ProductItem productItem : items)
+        for (ProductItem productItem : pItems)
         {
             if (productItem.getProduct().getTfo())
                 totalPrice += (productItem.getQuantity() - (productItem.getQuantity()/2)) * productItem.getProduct().getPrice();
@@ -218,7 +218,7 @@ public class TP4Activity extends ActionBarActivity {
         Log.i("Facture", transaction.toString());
         transactionRepository.save(transaction);
 
-        Toast.makeText(getBaseContext(), "Facture de " + String.format("%10.2f", getTotalPrice()) + "$", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), "Facture de " + String.format("%10.2f", getTotalPrice(items)) + "$", Toast.LENGTH_SHORT).show();
     }
 
     public void plusClick(View v) {
