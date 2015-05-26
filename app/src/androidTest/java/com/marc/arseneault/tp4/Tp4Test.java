@@ -34,7 +34,7 @@ public class Tp4Test extends AndroidTestCase{
     }
 
     public void testTfo2Items() {
-        Product product = new Product("Avocat", "123456", 12.54/*, true*/);//TODO Uncomment this when TFO is implemented
+        Product product = new Product("Avocat", "123456", 12.54, true);
 
         TP4Activity activity = new TP4Activity();
         activity.adapter.add(new ProductItem(2, product));
@@ -42,7 +42,7 @@ public class Tp4Test extends AndroidTestCase{
     }
 
     public void testTfo1Item() {
-        Product product = new Product("Avocat", "123456", 12.54/*, true*/);//TODO Uncomment this when TFO is implemented
+        Product product = new Product("Avocat", "123456", 12.54, true);
 
         TP4Activity activity = new TP4Activity();
         activity.adapter.add(new ProductItem(1, product));
@@ -50,7 +50,7 @@ public class Tp4Test extends AndroidTestCase{
     }
 
     public void testTfo3Items() {
-        Product product = new Product("Avocat", "123456", 12.54/*, true*/);//TODO Uncomment this when TFO is implemented
+        Product product = new Product("Avocat", "123456", 12.54, true);
 
         TP4Activity activity = new TP4Activity();
         activity.adapter.add(new ProductItem(3, product));
@@ -58,7 +58,7 @@ public class Tp4Test extends AndroidTestCase{
     }
 
     public void testRabais10pourcent() {
-        Product product = new Product("Avocat", "123456", 12.54/*, false*/);//TODO Uncomment this when TFO is implemented
+        Product product = new Product("Avocat", "123456", 12.54, false);
         //TODO Add percent to Product when implemented
 
         TP4Activity activity = new TP4Activity();
@@ -75,7 +75,7 @@ public class Tp4Test extends AndroidTestCase{
             int pourcent = rand.nextInt(100);
             double truePourcent = 1.0 - (pourcent / 100.0);
 
-            Product product = new Product("Avocat", "123456", 12.54/*, false*/);//TODO Uncomment this when TFO is implemented
+            Product product = new Product("Avocat", "123456", 12.54, false);
             //TODO Add truePourcent to Product when implemented
 
             TP4Activity activity = new TP4Activity();
