@@ -24,24 +24,25 @@ import model.Transaction;
 import model.repository.CRUD;
 import model.repository.ProductRepository;
 import model.repository.TransactionRepository;
+import service.ProductNotFoundException;
+import service.RepositoryService;
+import service.RepositoryServiceInterface;
 
 
 public class TP4Activity extends ActionBarActivity {
 
     JorisAdapter adapter;
     List<ProductItem> items = new ArrayList<ProductItem>();
-    public static ProductRepository productRepository;
-    public static TransactionRepository transactionRepository;
+    RepositoryServiceInterface repoServ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tp3);
-        productRepository = new ProductRepository(getApplicationContext());
-        transactionRepository = new TransactionRepository(getApplicationContext());
         //Pour ne pas avoir des transactions de stockés après la fermeture de l'application
         //Normalement, on voudrait les garder
-        transactionRepository.deleteAll();
+        repoServ.WipeTransactions();
+        repoServ = new RepositoryService(getApplicationContext());
 
         adapter = new JorisAdapter(TP4Activity.this, items);
         ListView list = (ListView)findViewById(R.id.product_List);
@@ -66,12 +67,12 @@ public class TP4Activity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_makeProducts) {
-            createProducts(productRepository);
+            createProducts(repoServ.GetProductRepository());
 
             return true;
         }
         else if (id == R.id.action_deleteProducts) {
-            productRepository.deleteAll();
+            repoServ.WipeProducts();
         }
         else if (id == R.id.action_makeTransaction) {
             makeTransaction();
@@ -82,7 +83,7 @@ public class TP4Activity extends ActionBarActivity {
 
     //
     public void makeTransaction() {
-        List<Product> products = productRepository.getAll();
+        List<Product> products = repoServ.GetAllProducts();
         if (products.size() <= 1)
         {
             Toast.makeText(getApplicationContext(), "Pas assez d'éléments dans les produits (< 2)", Toast.LENGTH_SHORT).show();
@@ -102,7 +103,15 @@ public class TP4Activity extends ActionBarActivity {
             Product product;
             do {
                 int r = random.nextInt(products.size());
-                product = productRepository.getById(tabProductID[r]);
+                try
+                {
+                    product = repoServ.GetProductById(tabProductID[r]);
+                }
+                catch (ProductNotFoundException e)
+                {
+                    Log.e("MakeTransaction", "ProductbyId not found");
+                    return;
+                }
                 list.add(product);
             } while (!list.contains(product));
         }
@@ -177,16 +186,15 @@ public class TP4Activity extends ActionBarActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanResult != null) {
-            Product product = productRepository.getByUPC(scanResult.getContents());
-            ProductItem productItem = new ProductItem(1, product);
-            if (product == null) {
-                Log.i("Main", "Scan result product was not found");
-                Toast.makeText(getBaseContext(), "Produit non-existant", Toast.LENGTH_SHORT).show();
-            }
-            else {
+            ProductItem productItem = null;
+            try {
+                productItem = new ProductItem(1, repoServ.GetProductByUPC(scanResult.getContents()));
                 items.add(productItem);
                 Log.i("Main", "Scan result from scanner is  " + scanResult.getContents());
                 adapter.notifyDataSetChanged();
+            } catch (ProductNotFoundException e) {
+                Log.i("Main", "Scan result product was not found");
+                Toast.makeText(getBaseContext(), "Produit non-existant", Toast.LENGTH_SHORT).show();
             }
         }
         updatePrice();
@@ -195,30 +203,17 @@ public class TP4Activity extends ActionBarActivity {
     //
 
     private void updatePrice() {
-        double totalPrice = getTotalPrice(items);
+        double totalPrice = repoServ.GetTotalPrice(items);
         TextView totalPriceText = (TextView)findViewById(R.id.totalPrice);
         totalPriceText.setText("$" + String.format("%10.2f", totalPrice));
         adapter.notifyDataSetChanged();
     }
 
-    public static double getTotalPrice(List<ProductItem> pItems){
-        double totalPrice =0.00;
-        for (ProductItem productItem : pItems)
-        {
-            if (productItem.getProduct().getTfo())
-                totalPrice += (productItem.getQuantity() - (productItem.getQuantity()/2)) * productItem.getProduct().getPrice();
-            else
-                totalPrice += productItem.getQuantity() * productItem.getProduct().getPrice();
-        }
-        return totalPrice;
-    }
-
     public void payButton(View v) {
-        Transaction transaction = new Transaction(items);
-        Log.i("Facture", transaction.toString());
-        transactionRepository.save(transaction);
+        Log.i("Facture", new Transaction(items).toString());
+        repoServ.SaveTransaction(items);
 
-        Toast.makeText(getBaseContext(), "Facture de " + String.format("%10.2f", getTotalPrice(items)) + "$", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), "Facture de " + String.format("%10.2f", repoServ.GetTotalPrice(items)) + "$", Toast.LENGTH_SHORT).show();
     }
 
     public void plusClick(View v) {
