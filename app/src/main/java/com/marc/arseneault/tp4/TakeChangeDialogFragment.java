@@ -136,6 +136,7 @@ public class TakeChangeDialogFragment extends DialogFragment{
                 if (m_change <= m_total) {
                     Toast.makeText(getActivity().getApplicationContext(), "Pas assez d'argent!", Toast.LENGTH_SHORT).show();
                 } else {
+                    Toast.makeText(getActivity().getApplicationContext(), "Facture de $" + m_total, Toast.LENGTH_SHORT).show();
                     TakeChangeDialogFragment.this.dismiss();
                 }
             }
