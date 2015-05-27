@@ -236,7 +236,7 @@ public class TP4Activity extends ActionBarActivity {
     }
 
     public void takeChange(){
-        createAndShowDialog();
+        createAndShowChange();
     }
 
     public void createAndShowChange () {

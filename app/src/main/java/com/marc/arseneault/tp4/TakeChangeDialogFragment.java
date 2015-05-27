@@ -76,8 +76,7 @@ public class TakeChangeDialogFragment extends DialogFragment{
                     change.addItems(Money.coin5s, nb005);
                     change.addItems(Money.coin1s, nb001);
 
-                } catch (CashException e)
-                {
+                } catch (CashException e) {
 
                 }
                 totalChange.setText("$ " + change.totalValue());
@@ -96,8 +95,6 @@ public class TakeChangeDialogFragment extends DialogFragment{
                 TakeChangeDialogFragment.this.dismiss();
             }
         });
-
-
 
         return v;
     }
