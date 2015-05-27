@@ -231,8 +231,7 @@ public class TP4Activity extends ActionBarActivity {
         Log.i("Facture", new Transaction(items).toString());
         repoServ.SaveTransaction(items);
         takeChange();
-
-        Toast.makeText(getBaseContext(), "Facture de " + String.format("%10.2f", repoServ.GetTotalPrice(items, seuilTaxes)) + "$", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getBaseContext(), "Facture de " + String.format("%10.2f", repoServ.GetTotalPrice(items, seuilTaxes)) + "$", Toast.LENGTH_SHORT).show();
     }
 
     public void takeChange(){
