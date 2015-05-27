@@ -32,16 +32,16 @@ public class RepositoryService implements RepositoryServiceInterface {
     {
         double result = 0.0;
 
-        for (ProductItem productItem : a)
-        {
-            if (productItem.getProduct().getTfo())
-                result += (productItem.getQuantity() - (productItem.getQuantity()/2)) * productItem.getProduct().getPrice();
-            else
-                result += productItem.getQuantity() * productItem.getProduct().getPrice();
-        }
-        if (result <= b)
-        {
-            result = (result * 1.15) * 1.15;
+        if (!a.isEmpty()) {
+            for (ProductItem productItem : a) {
+                if (productItem.getProduct().getTfo())
+                    result += (productItem.getQuantity() - (productItem.getQuantity() / 2)) * productItem.getProduct().getPrice();
+                else
+                    result += productItem.getQuantity() * productItem.getProduct().getPrice();
+            }
+            if (result <= b) {
+                result = (result * 1.15) * 1.15;
+            }
         }
 
         return result;
@@ -80,7 +80,7 @@ public class RepositoryService implements RepositoryServiceInterface {
         }
         catch(NumberFormatException e)
         {
-            throw new IllegalArgumentException();
+            //throw new IllegalArgumentException();
         }
 
         //****GET****//
