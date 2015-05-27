@@ -6,9 +6,8 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Product;
-import model.repository.CRUD;
-import model.repository.ProductRepository;
+import com.marc.arseneault.tp4.model.Product;
+import com.marc.arseneault.tp4.model.repository.ProductRepository;
 
 
 /**

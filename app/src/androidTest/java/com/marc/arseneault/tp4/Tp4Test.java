@@ -9,9 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import model.Product;
-import service.RepositoryService;
-import service.RepositoryServiceInterface;
+import com.marc.arseneault.tp4.gui.ProductItem;
+import com.marc.arseneault.tp4.model.Product;
+import com.marc.arseneault.tp4.service.RepositoryService;
+import com.marc.arseneault.tp4.service.RepositoryServiceInterface;
 
 public class Tp4Test extends AndroidTestCase{
 

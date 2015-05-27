@@ -19,14 +19,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import model.Product;
-import model.Transaction;
-import model.repository.CRUD;
-import model.repository.ProductRepository;
-import model.repository.TransactionRepository;
-import service.ProductNotFoundException;
-import service.RepositoryService;
-import service.RepositoryServiceInterface;
+import com.marc.arseneault.tp4.gui.JorisAdapter;
+import com.marc.arseneault.tp4.gui.ProductDialogFragment;
+import com.marc.arseneault.tp4.gui.ProductItem;
+import com.marc.arseneault.tp4.gui.SeuilTaxesDialogFragment;
+import com.marc.arseneault.tp4.gui.TakeChangeDialogFragment;
+import com.marc.arseneault.tp4.model.Product;
+import com.marc.arseneault.tp4.model.Transaction;
+import com.marc.arseneault.tp4.model.repository.CRUD;
+
+import com.marc.arseneault.tp4.service.ProductNotFoundException;
+import com.marc.arseneault.tp4.service.RepositoryService;
 
 
 public class TP4Activity extends ActionBarActivity {
