@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">TP3</string>
-    <string name="action_settings">Settings</string>
-    <string name="action_makeProducts">Ajouter Produits</string>
+    <string name="action_changeTaxes">Changer le seuil de taxes</string>
     <string name="action_deleteProducts">Vider les Produits</string>
     <string name="action_makeTransaction">Créer une Transaction</string>
-    <string name="action_changeTaxes">Changer le seuil de taxes</string>
-    <string name="button_payer">Payer</string>
-    <string name="button_ScannerCamera">Scanner Camera</string>
+    <string name="action_makeProducts">Ajouter Produits</string>
     <string name="addProduct">Ajouter un Produit</string>
+    <string name="addProductDialog_UPC">Code à barres</string>
+    <string name="addProductDialog_addButton">Ajouter</string>
     <string name="addProductDialog_productName">Nom du produit</string>
     <string name="addProductDialog_productPrice">Prix Unitaire</string>
-    <string name="addProductDialog_UPC">Code à barres</string>
     <string name="addProductDialog_tfo">Est en 2 pour 1</string>
-    <string name="addProductDialog_addButton">Ajouter</string>
-    <string name="taxDialog_seuilTaxes">Seuil de Taxes</string>
+    <string name="button_ScannerCamera">Scanner Camera</string>
+    <string name="button_payer">Payer</string>
     <string name="taxDialog_save">Sauvegarder</string>
-
+    <string name="taxDialog_seuilTaxes">Seuil de Taxes</string>
+    <string name="action_settings">Options</string>
 </resources>

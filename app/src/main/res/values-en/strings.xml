@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TP3</string>
+    <string name="action_changeTaxes">Change tax floor</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_deleteProducts">Empty products</string>
+    <string name="action_makeProducts">Add products</string>
+    <string name="action_makeTransaction">Create transaction</string>
+    <string name="addProduct">Add a product</string>
+    <string name="addProductDialog_UPC">Barcode</string>
+    <string name="addProductDialog_addButton">Add</string>
+    <string name="addProductDialog_productName">Product name</string>
+    <string name="addProductDialog_productPrice">Unit price</string>
+    <string name="addProductDialog_tfo">Is 2 for 1</string>
+    <string name="button_ScannerCamera">Scan with camera</string>
+    <string name="button_payer">Checkout</string>
+    <string name="taxDialog_save">Save</string>
+    <string name="taxDialog_seuilTaxes">Change tax floor</string>
+</resources>
