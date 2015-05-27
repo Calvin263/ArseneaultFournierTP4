@@ -68,7 +68,7 @@ public class GiveChangeDialogFragment extends DialogFragment {
         if (nb50 > 0)
             billet50.setText( Money.bill50.prettyPrint + ": " + nb50);
         else
-            billet100.setText( Money.bill100.prettyPrint + ": " + 0);
+            billet50.setText( Money.bill100.prettyPrint + ": " + 0);
 
         int nb20 = change.numberOfItemsFor(Money.bill20);
         if (nb20 > 0)
