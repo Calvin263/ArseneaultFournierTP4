@@ -85,14 +85,17 @@ public class Tp4Test extends AndroidTestCase{
         {
             int count = rand.nextInt(100);
             items.add(new ProductItem(count, product));
-            if(count * 50 > 500)
+            if(count * 50 > 2000)
             {
-                Assert.assertEquals("testTaxesOver100Random failed when count = " + count, count * 50, repoServ.GetTotalPrice(items, 500));
+                double amount = count * 50;
+                Assert.assertEquals("testTaxesOver100Random failed when count = " + count, amount, repoServ.GetTotalPrice(items, 2000));
             }
             else
             {
-                Assert.assertEquals("testTaxesOver100Random failed when count = " + count, ((count * 50)*1.15)*1.15, repoServ.GetTotalPrice(items, 500));
+                double amount = ((count * 50)*1.15)*1.15;
+                Assert.assertEquals("testTaxesOver100Random failed when count = " + count, (amount), repoServ.GetTotalPrice(items, 2000));
             }
+            items.clear();
         }
     }
 
