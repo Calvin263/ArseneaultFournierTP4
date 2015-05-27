@@ -220,7 +220,7 @@ public class TP4Activity extends ActionBarActivity {
 
     //
 
-    private void updatePrice() {
+    public void updatePrice() {
         double totalPrice = repoServ.GetTotalPrice(items, seuilTaxes);
         TextView totalPriceText = (TextView)findViewById(R.id.totalPrice);
         totalPriceText.setText("$" + String.format("%10.2f", totalPrice));
