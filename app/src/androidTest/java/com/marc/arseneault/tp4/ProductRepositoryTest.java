@@ -91,6 +91,7 @@ public class ProductRepositoryTest  extends AndroidTestCase {
             assertEquals(0, repository.getAll().size());
         }
 
+        /*
         public void testSaveOnePerformance(){
             long a = System.currentTimeMillis();
             for (int i = 0 ; i < 300 ; i++){
@@ -100,6 +101,7 @@ public class ProductRepositoryTest  extends AndroidTestCase {
             long b = System.currentTimeMillis();
             Log.i("TestLoad", repository.getClass().getSimpleName()+"  : temps est " + (b - a) + " ms");
         }
+        */
 
         public void testScanUPCNull() {
             Product p = new Product("produit", "1333297", 10.0, false);
