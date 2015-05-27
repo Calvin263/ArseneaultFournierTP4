@@ -1,14 +1,10 @@
 package service;
 
 import android.content.Context;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.marc.arseneault.tp4.ProductItem;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import model.Product;
 import model.Transaction;
@@ -72,9 +68,23 @@ public class RepositoryService implements RepositoryServiceInterface {
     }
 
     @Override
-    public Product GetProductByUPC(String UPC) throws ProductNotFoundException {
+    public Product GetProductByUPC(String UPC) throws ProductNotFoundException, IllegalArgumentException {
+        //****VALIDATION****//
+        if(UPC.isEmpty())
+        {
+            throw new IllegalArgumentException();
+        }
+        try
+        {
+            Integer.parseInt(UPC);
+        }
+        catch(NumberFormatException e)
+        {
+            throw new IllegalArgumentException();
+        }
+
+        //****GET****//
         Product product = productRepo.getByUPC(UPC);
-        ProductItem productItem = new ProductItem(1, product);
         if (product == null) {
             throw new ProductNotFoundException();
         }
