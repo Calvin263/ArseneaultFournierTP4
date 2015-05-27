@@ -5,7 +5,7 @@
     <string name="action_deleteProducts">Vider les Produits</string>
     <string name="action_makeTransaction">Créer une Transaction</string>
     <string name="action_makeProducts">Ajouter Produits</string>
-    <string name="addProduct">Ajouter un Produit</string>
+    <string name="addProduct">Ajouter Produit</string>
     <string name="addProductDialog_UPC">Code à barres</string>
     <string name="addProductDialog_addButton">Ajouter</string>
     <string name="addProductDialog_productName">Nom du produit</string>

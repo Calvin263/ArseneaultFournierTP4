@@ -6,7 +6,7 @@
     <string name="action_deleteProducts">Empty products</string>
     <string name="action_makeProducts">Add products</string>
     <string name="action_makeTransaction">Create transaction</string>
-    <string name="addProduct">Add a product</string>
+    <string name="addProduct">Add product</string>
     <string name="addProductDialog_UPC">Barcode</string>
     <string name="addProductDialog_addButton">Add</string>
     <string name="addProductDialog_productName">Product name</string>
