@@ -70,7 +70,7 @@ public class RepositoryService implements RepositoryServiceInterface {
     @Override
     public Product GetProductByUPC(String UPC) throws ProductNotFoundException, IllegalArgumentException {
         //****VALIDATION****//
-        if(UPC.isEmpty())
+        if(UPC.isEmpty() || UPC.length() > 13)
         {
             throw new IllegalArgumentException();
         }
