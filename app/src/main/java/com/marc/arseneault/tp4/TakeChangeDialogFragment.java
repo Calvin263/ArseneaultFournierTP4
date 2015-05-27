@@ -131,7 +131,7 @@ public class TakeChangeDialogFragment extends DialogFragment {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                Log.i("Dialog", "patate");
+                Log.i("Dialog", "TakeChange");
 
                 //
                 if (m_change <= m_total) {

@@ -11,7 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.marc.arseneault.tp4.ProductItem;
 import com.marc.arseneault.tp4.R;
+import com.marc.arseneault.tp4.TP4Activity;
 import com.marc.arseneault.tp4.monies.CashRegister;
 import com.marc.arseneault.tp4.monies.Change;
 import com.marc.arseneault.tp4.monies.IChange;
@@ -95,7 +97,7 @@ public class GiveChangeDialogFragment extends DialogFragment {
         if (nb2 > 0)
             billet2.setText( Money.coin2.prettyPrint + ": " + nb2);
         else
-            billet1.setText( Money.coin1.prettyPrint + ": " + 0);
+            billet2.setText( Money.coin2.prettyPrint + ": " + 0);
 
         int nb1 = change.numberOfItemsFor(Money.coin1);
         if (nb1 > 0)
@@ -128,7 +130,7 @@ public class GiveChangeDialogFragment extends DialogFragment {
             billet001.setText( Money.coin1s.prettyPrint + ": " + 0);
 
         double totalValue = change.totalValue();
-        textTotal.setText(totalValue + "");
+        textTotal.setText("$" + totalValue + "");
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -136,7 +138,12 @@ public class GiveChangeDialogFragment extends DialogFragment {
                 Log.i("Dialog", "Give Change");
 
                 //
-
+                for (ProductItem p :TP4Activity.items)
+                {
+                    Log.i("Dialog", "Facture: " + p.getQuantity() + " " + p.getProduct().getName() + ": $" + p.getQuantity() + p.getProduct().getPrice());
+                }
+                Log.i("Facture", "Facture: Sous-Total: $" + Math.round((m_total * 0.8)* 20.0) / 20.0);
+                Log.i("Facture", "Facture: Total: $" + m_total);
                 GiveChangeDialogFragment.this.dismiss();
             }
         });

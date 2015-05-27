@@ -32,7 +32,7 @@ import service.RepositoryServiceInterface;
 public class TP4Activity extends ActionBarActivity {
 
     JorisAdapter adapter;
-    List<ProductItem> items = new ArrayList<ProductItem>();
+    public static List<ProductItem> items = new ArrayList<ProductItem>();
     public static RepositoryService repoServ;
     public static double seuilTaxes;
 
