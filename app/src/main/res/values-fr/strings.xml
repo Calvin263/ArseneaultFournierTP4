@@ -16,4 +16,17 @@
     <string name="taxDialog_save">Sauvegarder</string>
     <string name="taxDialog_seuilTaxes">Seuil de Taxes</string>
     <string name="action_settings">Options</string>
+    <string name="takeChangeDialog_100bill">Billets de 100$</string>
+    <string name="takeChangeDialog_50bill">Billets de $50</string>
+    <string name="takeChangeDialog_10bill">Billets de $10</string>
+    <string name="takeChangeDialog_5bill">Billets de $5</string>
+    <string name="takeChangeDialog_2piece">Pièces de $2</string>
+    <string name="takeChangeDialog_1piece">Pièces de $1</string>
+    <string name="takeChangeDialog_25piece">Pièces de $0.25</string>
+    <string name="takeChangeDialog_5piece">Pièces de $0.05</string>
+    <string name="takeChangeDialog_001piece">Pièces de $0.01</string>
+    <string name="takeChangeDialog_totalChange">Total Change</string>
+    <string name="takeChangeDialog_totalFacture">Total Facture</string>
+    <string name="takeChangeDialog_10piece">Pièces de $0.10</string>
+    <string name="takeChangeDialog_20bill">Billets de $20</string>
 </resources>

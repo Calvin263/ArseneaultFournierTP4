@@ -16,4 +16,17 @@
     <string name="button_payer">Checkout</string>
     <string name="taxDialog_save">Save</string>
     <string name="taxDialog_seuilTaxes">Change tax floor</string>
+    <string name="takeChangeDialog_001piece">$0.01 coin</string>
+    <string name="takeChangeDialog_100bill">$100 bill</string>
+    <string name="takeChangeDialog_10bill">$10 bill</string>
+    <string name="takeChangeDialog_10piece">$0.10 coin</string>
+    <string name="takeChangeDialog_1piece">$1 coin</string>
+    <string name="takeChangeDialog_20bill">$20 bill</string>
+    <string name="takeChangeDialog_25piece">$0.25 coin</string>
+    <string name="takeChangeDialog_2piece">$2 coin</string>
+    <string name="takeChangeDialog_50bill">$50 bill</string>
+    <string name="takeChangeDialog_5bill">$5 bill</string>
+    <string name="takeChangeDialog_5piece">$0.05 coin</string>
+    <string name="takeChangeDialog_totalChange">Change Total</string>
+    <string name="takeChangeDialog_totalFacture">Bill Total</string>
 </resources>
