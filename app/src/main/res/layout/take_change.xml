@@ -138,12 +138,19 @@
         android:text="@string/takeChangeDialog_totalChange"
         android:id="@+id/textView1" />
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Re-Calculer"
+        android:id="@+id/buttonUpdate" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="$0.00"
-        android:id="@+id/textView"
+        android:id="@+id/textFacture"
         android:layout_gravity="right" />
 
     <TextView

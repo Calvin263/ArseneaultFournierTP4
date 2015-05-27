@@ -230,9 +230,22 @@ public class TP4Activity extends ActionBarActivity {
     public void payButton(View v) {
         Log.i("Facture", new Transaction(items).toString());
         repoServ.SaveTransaction(items);
-
+        takeChange();
 
         Toast.makeText(getBaseContext(), "Facture de " + String.format("%10.2f", repoServ.GetTotalPrice(items, seuilTaxes)) + "$", Toast.LENGTH_SHORT).show();
+    }
+
+    public void takeChange(){
+        createAndShowDialog();
+    }
+
+    public void createAndShowChange () {
+        try {
+            TakeChangeDialogFragment newFragment = new TakeChangeDialogFragment(repoServ.GetTotalPrice(items, seuilTaxes));
+            newFragment.show(getFragmentManager(), "dialog");
+        } catch (InvalidParameterException e) {
+            Toast.makeText(getBaseContext(), "Certain paramètres sont invalides", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void plusClick(View v) {

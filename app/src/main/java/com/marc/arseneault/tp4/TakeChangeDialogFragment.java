@@ -9,6 +9,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import com.marc.arseneault.tp4.monies.Change;
+import com.marc.arseneault.tp4.monies.IChange;
+import com.marc.arseneault.tp4.monies.Money;
+import com.marc.arseneault.tp4.monies.exceptions.CashException;
 
 import java.security.InvalidParameterException;
 
@@ -19,6 +25,8 @@ import model.Product;
  */
 public class TakeChangeDialogFragment extends DialogFragment{
 
+    public double m_total;
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -27,6 +35,12 @@ public class TakeChangeDialogFragment extends DialogFragment{
 
         // recuperation de chaque element d'interface
             final Button button = (Button) v.findViewById(R.id.buttonPayer);
+            final Button update = (Button) v.findViewById(R.id.buttonUpdate);
+            final TextView totalChange = (TextView) v.findViewById(R.id.totalPrice);
+            final TextView totalFacture = (TextView) v.findViewById(R.id.textFacture);
+
+            totalFacture.setText("$ " + m_total);
+
             final EditText billet100 = (EditText) v.findViewById(R.id.edit100);
             final EditText billet50 = (EditText) v.findViewById(R.id.edit50);
             final EditText billet20 = (EditText) v.findViewById(R.id.edit20);
@@ -37,15 +51,38 @@ public class TakeChangeDialogFragment extends DialogFragment{
             final EditText billet005 = (EditText) v.findViewById(R.id.edit005);
             final EditText billet001 = (EditText) v.findViewById(R.id.edit001);
 
-            int nb100 = Integer.parseInt(billet100.getText().toString());
-            int nb50 = Integer.parseInt(billet50.getText().toString());
-            int nb20 = Integer.parseInt(billet20.getText().toString());
-            int nb10 = Integer.parseInt(billet10.getText().toString());
-            int nb5 = Integer.parseInt(billet5.getText().toString());
-            int nb025 = Integer.parseInt(billet025.getText().toString());
-            int nb010 = Integer.parseInt(billet010.getText().toString());
-            int nb005 = Integer.parseInt(billet005.getText().toString());
-            int nb001 = Integer.parseInt(billet001.getText().toString());
+            final int nb100 = Integer.parseInt(billet100.getText().toString());
+            final int nb50 = Integer.parseInt(billet50.getText().toString());
+            final int nb20 = Integer.parseInt(billet20.getText().toString());
+            final int nb10 = Integer.parseInt(billet10.getText().toString());
+            final int nb5 = Integer.parseInt(billet5.getText().toString());
+            final int nb025 = Integer.parseInt(billet025.getText().toString());
+            final int nb010 = Integer.parseInt(billet010.getText().toString());
+            final int nb005 = Integer.parseInt(billet005.getText().toString());
+            final int nb001 = Integer.parseInt(billet001.getText().toString());
+
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IChange change = new Change();
+                try {
+                    change.addItems(Money.bill100, nb100);
+                    change.addItems(Money.bill50, nb50);
+                    change.addItems(Money.bill20, nb20);
+                    change.addItems(Money.bill10, nb10);
+                    change.addItems(Money.bill5, nb5);
+                    change.addItems(Money.coin25s, nb025);
+                    change.addItems(Money.coin10s, nb010);
+                    change.addItems(Money.coin5s, nb005);
+                    change.addItems(Money.coin1s, nb001);
+
+                } catch (CashException e)
+                {
+
+                }
+                totalChange.setText("$ " + change.totalValue());
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -60,6 +97,12 @@ public class TakeChangeDialogFragment extends DialogFragment{
             }
         });
 
+
+
         return v;
+    }
+
+    public TakeChangeDialogFragment(double pTotal) {
+        m_total = pTotal;
     }
 }
