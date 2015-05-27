@@ -136,7 +136,10 @@ public class GiveChangeDialogFragment extends DialogFragment {
                 //
                 for (ProductItem p :TP4Activity.items)
                 {
-                    Log.i("Dialog", "Facture: " + p.getQuantity() + " " + p.getProduct().getName() + ": $" + p.getQuantity() + p.getProduct().getPrice());
+                    if (p.getProduct().getTfo())
+                        Log.i("Dialog", "Facture: " + p.getQuantity() + " " + p.getProduct().getName() + ": $" + (p.getQuantity() - (p.getQuantity() / 2)) * p.getProduct().getPrice() + " (est en 2 pour 1)");
+                    else
+                        Log.i("Dialog", "Facture: " + p.getQuantity() + " " + p.getProduct().getName() + ": $" + p.getQuantity() * p.getProduct().getPrice());
                 }
                 Log.i("Facture", "Facture: Sous-Total: $" + Math.round((m_total * 0.8)* 20.0) / 20.0);
                 Log.i("Facture", "Facture: Total: $" + m_total);
