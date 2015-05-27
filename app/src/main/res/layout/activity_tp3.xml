@@ -8,7 +8,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Scanner Camera"
+        android:text="@string/button_ScannerCamera"
         android:id="@+id/scannerButton"
         android:onClick="scannerClick"
         android:layout_alignParentTop="true"
@@ -19,7 +19,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Payer"
+        android:text="@string/button_payer"
         android:id="@+id/payButton"
         android:onClick="payButton"
         android:layout_alignTop="@+id/scannerButton"
@@ -50,7 +50,7 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ajouter un Produit"
+        android:text="@string/addProduct"
         android:onClick="clickAndShow"
         android:id="@+id/ajouterButton"
         android:layout_above="@+id/product_List"
