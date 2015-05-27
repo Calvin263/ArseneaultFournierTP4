@@ -7,7 +7,6 @@ import junit.framework.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import model.Product;
 import service.RepositoryService;
@@ -64,33 +63,6 @@ public class Tp4Test extends AndroidTestCase{
         TP4Activity activity = new TP4Activity();
         activity.adapter.add(new ProductItem(3, product));
         Assert.assertEquals("Test deux pour un 2 items failed", 12.54 * 2, repoServ.GetTotalPrice(items, 100000));
-    }
-
-    public void testRabais10pourcent() {
-        Product product = new Product("Avocat", "123456", 12.54, false);
-        //TODO Add percent to Product when implemented
-
-        TP4Activity activity = new TP4Activity();
-        activity.adapter.add(new ProductItem(1, product));
-        Assert.assertEquals("Test deux pour un 2 items failed", 12.54 * 0.90, repoServ.GetTotalPrice(items, 100000));
-    }
-
-    public void testRabais100xRandomPourcent() {
-
-        Random rand = new Random(123456);
-
-        for (int i = 0; i < 100; i++)
-        {
-            int pourcent = rand.nextInt(100);
-            double truePourcent = 1.0 - (pourcent / 100.0);
-
-            Product product = new Product("Avocat", "123456", 12.54, false);
-            //TODO Add truePourcent to Product when implemented
-
-            TP4Activity activity = new TP4Activity();
-            activity.adapter.add(new ProductItem(1, product));
-            Assert.assertEquals("Test deux pour un 2 items failed", 12.54 * truePourcent, repoServ.GetTotalPrice(items, 100000));
-        }
     }
 
 }
