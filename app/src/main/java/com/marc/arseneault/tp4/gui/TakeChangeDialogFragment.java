@@ -16,7 +16,6 @@ import com.marc.arseneault.tp4.model.monies.Change;
 import com.marc.arseneault.tp4.model.monies.IChange;
 import com.marc.arseneault.tp4.model.monies.Money;
 import com.marc.arseneault.tp4.model.monies.exceptions.CashException;
-import com.marc.arseneault.tp4.model.monies.exceptions.GiveChangeDialogFragment;
 
 import java.security.InvalidParameterException;
 
