@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/edit100"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:hint="Billets de $100"
+        android:numeric="integer" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/edit50"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:hint="Billets de $50"
+        android:numeric="integer" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/edit20"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:hint="Billets de $20"
+        android:numeric="integer" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/edit10"
+        android:layout_gravity="right"
+        android:gravity="center"
+        android:hint="Billets de $10"
+        android:numeric="integer" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/edit5"
+        android:layout_gravity="right"
+        android:gravity="center"
+        android:hint="Billets de $5"
+        android:numeric="integer" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/edit2"
+        android:layout_gravity="right"
+        android:gravity="center"
+        android:hint="Pièces de $2"
+        android:numeric="integer" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/edit1"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:hint="Pièces de $1"
+        android:numeric="integer" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/edit025"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:hint="Pièces de $0.25"
+        android:numeric="integer" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/edit010"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:hint="Pièces de $0.10"
+        android:numeric="integer" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/edit005"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:hint="Pièces de $0.05"
+        android:numeric="integer" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/edit001"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:hint="Pièces de $0.01"
+        android:numeric="integer" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=" $0.00"
+        android:id="@+id/textTotal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Total Change"
+        android:id="@+id/textView1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="$0.00"
+        android:id="@+id/textView"
+        android:layout_gravity="right" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Total Facture"
+        android:id="@+id/textView2"
+        android:layout_gravity="right" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Payer"
+        android:id="@+id/buttonPayer"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>
