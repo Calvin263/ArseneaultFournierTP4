@@ -204,9 +204,8 @@ public class TP4Activity extends ActionBarActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         IntentResult scanResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
         if (scanResult != null) {
-            ProductItem productItem = null;
             try {
-                productItem = new ProductItem(1, repoServ.GetProductByUPC(scanResult.getContents()));
+                ProductItem productItem = new ProductItem(1, repoServ.GetProductByUPC(scanResult.getContents()));
                 items.add(productItem);
                 Log.i("Main", "Scan result from scanner is  " + scanResult.getContents());
                 adapter.notifyDataSetChanged();
