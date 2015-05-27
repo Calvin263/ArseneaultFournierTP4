@@ -12,7 +12,7 @@
     <string name="addProductDialog_productName">Product name</string>
     <string name="addProductDialog_productPrice">Unit price</string>
     <string name="addProductDialog_tfo">Is 2 for 1</string>
-    <string name="button_ScannerCamera">Scan with camera</string>
+    <string name="button_ScannerCamera">Scan</string>
     <string name="button_payer">Checkout</string>
     <string name="taxDialog_save">Save</string>
     <string name="taxDialog_seuilTaxes">Change tax floor</string>
